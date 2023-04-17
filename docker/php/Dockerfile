@@ -1,6 +1,6 @@
 FROM php:8.2-fpm-alpine
 
-WORKDIR /var/www/yanochkin_app
+WORKDIR /var/www/html
 
 RUN apk update && apk add --no-cache \
     git \

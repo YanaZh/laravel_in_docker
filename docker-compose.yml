@@ -5,12 +5,12 @@ services:
       context: ./docker/php
       dockerfile: Dockerfile
     volumes:
-      - "./src:/var/www/yanochkin_app"
+      - "./src:/var/www/html"
   nginx:
     image: nginx:alpine
     volumes:
       - "./docker/nginx/nginx.conf:/etc/nginx/nginx.conf"
-      - "./src/public:/var/www/html"
+      - "./src:/var/www/html"
     ports:
       - "80:80"
     depends_on:
@@ -27,6 +27,7 @@ services:
       - pg_data:/var/lib/postgresql/data
     ports:
       - ${POSTGRES_DB_PORT}:5432
-
+networks:
+  default: { }
 volumes:
   pg_data: { }
